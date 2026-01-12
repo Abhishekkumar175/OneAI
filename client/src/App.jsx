@@ -1,14 +1,17 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import LandingPage from './pages/LandingPage'
-function App() {
-  return (
-    <div>
-      <Routes>
-        <Route path='/' element={<LandingPage />} />
-      </Routes>
-    </div>
-  )
-}
+import Navbar from "./components/navbar/Navbar";
+import Hero from "./components/hero/Hero";
+import ToolsSection from "./components/ToolsSection";
+import AudienceSection from "./components/AudienceSection";
+import Pricing from "./components/Pricing";
 
-export default App
+export default function App() {
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <ToolsSection />
+      <AudienceSection />
+      <Pricing />
+    </>
+  );
+}
