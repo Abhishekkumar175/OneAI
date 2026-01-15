@@ -45,6 +45,7 @@ function AudienceCard({ item }) {
   const { pos, update } = useMousePosition();
 
   return (
+    
     <motion.div
       onMouseMove={update}
       whileHover={{ y: -4 }}
