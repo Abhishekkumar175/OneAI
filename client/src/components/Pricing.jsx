@@ -25,37 +25,32 @@ const plans = [
       "Advanced tools",
     ],
   },
-  {
-    name: "Team",
-    price: "₹1,499",
-    desc: "For startups & teams",
-    features: [
-      "Team collaboration",
-      "Shared workspaces",
-      "Admin controls",
-      "Dedicated support",
-    ],
-  },
 ];
 
 export default function Pricing() {
   return (
-    <section className="py-28 relative">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="relative py-32">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
-            Simple pricing
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+            Flexible <span className="text-violet-400">Pricing</span>
           </h2>
-          <p className="text-gray-400 mt-3 text-sm">
-            Choose a plan that scales with you
+          <p className="text-gray-400 mt-4 text-base">
+            Simple plans that grow with your workflow
           </p>
-        </div>
+        </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center max-w-4xl mx-auto">
           {plans.map((plan, i) => (
-            <PricingCard key={i} plan={plan} />
+            <PricingCard key={i} plan={plan} index={i} />
           ))}
         </div>
       </div>
@@ -63,25 +58,31 @@ export default function Pricing() {
   );
 }
 
-function PricingCard({ plan }) {
+function PricingCard({ plan, index }) {
   const { pos, update } = useMousePosition();
 
   return (
     <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.12, duration: 0.6 }}
       onMouseMove={update}
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.25 }}
-      className={`relative group rounded-xl ${
-        plan.popular ? "md:scale-[1.02]" : ""
-      }`}
+      whileHover={{ y: -10 }}
+      className="relative group"
     >
-      {/* Cursor Light */}
+      {/* Gradient Border (Pro only) */}
+      {plan.popular && (
+        <div className="absolute -inset-1px rounded-2xl bg-linear-to-r from-violet-500 via-indigo-500 to-cyan-400 opacity-70 blur-sm" />
+      )}
+
+      {/* Cursor-follow glow */}
       <div
-        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300"
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300"
         style={{
           background: `radial-gradient(
-            260px circle at ${pos.x}% ${pos.y}%,
-            rgba(255,255,255,0.08),
+            280px circle at ${pos.x}% ${pos.y}%,
+            rgba(139,92,246,0.45),
             transparent 60%
           )`,
         }}
@@ -89,48 +90,64 @@ function PricingCard({ plan }) {
 
       {/* Card */}
       <div
-        className={`relative h-full rounded-xl border px-7 py-9 backdrop-blur-md
+        className={`relative h-full rounded-2xl p-8 backdrop-blur-xl border
         ${
           plan.popular
-            ? "border-white/20 bg-white/4"
-            : "border-white/10 bg-white/2"
+            ? "bg-white/8 border-white/20"
+            : "bg-white/5 border-white/10"
         }`}
       >
         {plan.popular && (
-          <span className="absolute top-4 right-4 text-xs text-white/70">
-            Recommended
+          <span className="inline-block mb-4 px-3 py-1 rounded-full text-xs font-medium bg-violet-500/10 text-violet-300">
+            Most Popular
           </span>
         )}
 
-        <h3 className="text-lg font-medium mb-1">{plan.name}</h3>
-        <p className="text-sm text-gray-400 mb-6">{plan.desc}</p>
+        <h3 className="text-xl font-semibold mb-1">{plan.name}</h3>
+        <p className="text-gray-400 text-sm mb-6">{plan.desc}</p>
 
-        <div className="mb-6">
-          <span className="text-3xl font-semibold">{plan.price}</span>
-          <span className="text-gray-400 text-sm"> / month</span>
+        {/* Price */}
+        <div className="flex items-end gap-1 mb-8">
+          <span className="text-4xl font-bold">{plan.price}</span>
+          <span className="text-gray-400 text-sm mb-1">/month</span>
         </div>
 
-        <ul className="space-y-3 mb-8">
+        {/* Features */}
+        <motion.ul
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.08 } },
+          }}
+          className="space-y-3 mb-10"
+        >
           {plan.features.map((feature, i) => (
-            <li
+            <motion.li
               key={i}
+              variants={{
+                hidden: { opacity: 0, x: -10 },
+                show: { opacity: 1, x: 0 },
+              }}
               className="flex items-center gap-3 text-sm text-gray-300"
             >
-              <Check className="w-4 h-4 text-white/70" />
+              <Check className="w-4 h-4 text-violet-400" />
               {feature}
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
 
+        {/* CTA */}
         <button
-          className={`w-full py-2.5 rounded-lg text-sm transition
+          className={`w-full py-3 rounded-xl text-sm font-medium transition-all
           ${
             plan.popular
-              ? "bg-white text-black hover:bg-gray-200"
+              ? "bg-linear-to-r from-violet-500 to-indigo-500 hover:opacity-90 shadow-lg"
               : "border border-white/20 hover:bg-white/10"
           }`}
         >
-          Get started
+          Get Started
         </button>
       </div>
     </motion.div>

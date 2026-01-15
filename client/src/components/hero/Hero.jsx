@@ -1,56 +1,71 @@
 import { motion } from "framer-motion";
 import Particles from "./Particles";
 
+
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
-
-      {/* Background Effects */}
-      <Particles />
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#7c3aed_0%,transparent_60%)] opacity-20" />
+    <section className="relative min-h-screen overflow-hidden flex items-center justify-center bg-[#0b0f1a]">
+      {/* ================= 3D BACKGROUND ================= */}
+      {/* 3D BACKGROUND */}
      
 
-      {/* Content */}
-      <div className="relative z-30 text-center px-6 max-w-4xl">
+      {/* ================= PARTICLES ================= */}
+      <div className="absolute inset-0 z-10">
+        <Particles />
+      </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+      {/* ================= HERO CONTENT ================= */}
+      <div className="relative z-30 text-center px-6 max-w-4xl">
+        {/* BADGE */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-bold"
+          transition={{ duration: 0.6 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
+          bg-white/5 border border-white/10 backdrop-blur-md mb-8"
         >
-          <span className="bg-linear-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
-            All Your AI Tools
+          <span className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
+          <span className="text-sm text-gray-300">All-in-one AI Platform</span>
+        </motion.div>
+
+        {/* HEADING */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-white"
+        >
+          Build Faster with
+          <span className="block bg-linear-to-r from-violet-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+            Powerful AI Tools
           </span>
-          <br />
-          One Powerful Platform.
         </motion.h1>
 
+        {/* SUBTEXT */}
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mt-6 text-gray-400 text-lg"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="max-w-2xl mx-auto text-gray-400 text-lg mb-12"
         >
-          Chat, create content, analyze resumes, generate images,
-          and more — powered by AI.
+          Chat, generate content, analyze resumes, create images, and automate
+          your workflow — all under one intelligent dashboard.
         </motion.p>
 
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
           className="mt-10 flex justify-center gap-4"
         >
-          <button className="px-8 py-4 rounded-full bg-linear-to-r from-purple-600 to-indigo-600 hover:scale-105 transition shadow-lg">
+          <button className="px-8 py-4 rounded-full bg-linear-to-r from-purple-600 to-indigo-600 hover:scale-105 transition shadow-lg text-white">
             Get Started Free
           </button>
-          <button className="px-8 py-4 rounded-full border border-white/20 hover:border-purple-400 transition">
+          <button className="px-8 py-4 rounded-full border border-white/20 hover:border-purple-400 transition text-white">
             Explore Features
           </button>
         </motion.div>
-
       </div>
     </section>
   );
