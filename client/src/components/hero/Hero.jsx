@@ -5,16 +5,11 @@ import Particles from "./Particles";
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center bg-[#0b0f1a]">
-      {/* ================= 3D BACKGROUND ================= */}
-      {/* 3D BACKGROUND */}
-     
 
-      {/* ================= PARTICLES ================= */}
       <div className="absolute inset-0 z-10">
         <Particles />
       </div>
 
-      {/* ================= HERO CONTENT ================= */}
       <div className="relative z-30 text-center px-6 max-w-4xl">
         {/* BADGE */}
         <motion.div

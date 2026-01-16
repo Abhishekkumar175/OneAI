@@ -55,6 +55,7 @@ const container = {
 export default function ToolsSection() {
   return (
     <section className="relative py-32">
+     
       <div className="absolute inset-x-0 -top-px h-px bg-linear-to-r from-transparent via-violet-500/40 to-transparent" />
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}

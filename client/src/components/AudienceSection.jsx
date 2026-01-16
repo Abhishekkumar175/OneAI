@@ -19,6 +19,12 @@ const audiences = [
 export default function PerfectForEveryone() {
   return (
     <section className="py-20 bg-black/10 overflow-hidden relative">
+       {/* Background Glow */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-linear-to-b from-violet-500/10 via-transparent to-transparent" />
+        <div className="absolute left-1/2 top-1/2 w-125 h-125 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/20 blur-[120px]" />
+      </div>
+
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-14">
