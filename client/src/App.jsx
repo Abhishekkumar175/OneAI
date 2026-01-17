@@ -7,15 +7,15 @@ import {
 
 import Landing from "./pages/Landing";
 import AILayout from "./pages/ai/AILayout";
-import Chat from "./pages/ai/Chat";
-import DashBoard from "./pages/ai/DashBoard";
-import ReviewResume from "./pages/ai/ReviewResume";
+import Dashboard from "./pages/ai/dashboard/DashBoard";
+import Page from "./pages/ai/resume-review/page.jsx";
 import GenerateImages from "./pages/ai/GenerateImages";
 import WriteArticle from "./pages/ai/WriteArticle";
 import RemoveObject from "./pages/ai/RemoveObject";
 import RemoveBackground from "./pages/ai/RemoveBackground";
 import BlogTitles from "./pages/ai/BlogTitles";
-import Community from "./pages/ai/Community";
+import ChatPage from "./pages/ai/chat/ChatPage";
+import CommunityPage from "./pages/ai/community/CommunityPage.jsx";
 
 export default function App() {
   return (
@@ -38,15 +38,15 @@ export default function App() {
           </>
         }
       >
-        <Route index element={<DashBoard />} />
-        <Route path="chat" element={<Chat />} />
-        <Route path="review" element={<ReviewResume />} />
+        <Route index element={<Dashboard />} />
+        <Route path="chat" element={<ChatPage />} />
+        <Route path="review" element={<Page />} />
         <Route path="image" element={<GenerateImages />} />
         <Route path="article" element={<WriteArticle />} />
         <Route path="blog" element={<BlogTitles />} />
         <Route path="remove-object" element={<RemoveObject />} />
         <Route path="remove-bg" element={<RemoveBackground />} />
-        <Route path="community" element={<Community />} />
+        <Route path="community" element={<CommunityPage />} />
       </Route>
     </Routes>
   );
