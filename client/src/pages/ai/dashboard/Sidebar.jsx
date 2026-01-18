@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import { usePlan } from "../../../hooks/usePlan";
 import {
   LayoutDashboard,
   PenLine,
@@ -13,6 +12,8 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { UserButton, useUser } from "@clerk/clerk-react";
+import { Protect } from "@clerk/clerk-react";
+
 
 const menu = [
   { name: "Dashboard", icon: LayoutDashboard, path: "/ai" },
@@ -28,7 +29,7 @@ const menu = [
 
 export default function Sidebar() {
   const { user } = useUser();
-  const { plan } = usePlan(); 
+  //const { plan } = usePlan(); 
   
 
   return (
@@ -77,15 +78,10 @@ export default function Sidebar() {
             {user?.fullName}
           </p>
           <p
-            className={`text-xs ${
-              plan === "free_user"
-                ? "text-violet-400"
-                : plan === "premium"
-                ? "text-emerald-400"
-                : "text-gray-400"
-            }`}
+            className="text-xs text-gray-500"
           >
-            {plan === "free_user" ? "Free Plan" : "Premium Plan"}
+            <Protect plan="premium" fallback="Free">Premium </Protect>
+            plan
           </p>
         </div>
 

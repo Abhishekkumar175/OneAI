@@ -1,6 +1,7 @@
 import StatCard from "./StatCard";
 import RecentCreations from "./RecentCreations";
 import { Sparkles, Gem } from "lucide-react";
+import { Protect } from "@clerk/clerk-react";
 
 export default function Dashboard() {
   return (
@@ -23,7 +24,7 @@ export default function Dashboard() {
             />
             <StatCard
               title="Active Plan"
-              value="Free"
+              value={<Protect plan="premium" fallback="Free">Premium </Protect>}
               icon={<Gem className="text-white" />}
               color="bg-pink-600"
             />

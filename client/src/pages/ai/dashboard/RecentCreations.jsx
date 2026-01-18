@@ -6,7 +6,7 @@ export default function RecentCreations() {
       </h3>
 
       <div className="bg-[#121826] border border-white/10 rounded-xl p-6 text-gray-400 text-sm">
-        No creations yet. Start using AI tools 🚀
+        No creations yet. Start using AI tools 
       </div>
     </div>
   );

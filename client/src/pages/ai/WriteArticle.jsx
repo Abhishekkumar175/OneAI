@@ -6,8 +6,8 @@ export default function WriteArticle() {
   const [length, setLength] = useState("short");
 
   return (
-    <div className="p-6 bg-[#020617] ">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="p-6 bg-[#020617]  ">
+      <div className="grid grid-cols-1  lg:grid-cols-2 gap-6">
 
         {/* LEFT: CONFIG CARD */}
         <div className="bg-[#0F172A] border  border-white/10 rounded-xl p-6">
