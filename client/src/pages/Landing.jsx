@@ -7,7 +7,6 @@ import Hero from "../components/hero/Hero";
 import ToolsSection from "../components/ToolsSection";
 import AudienceSection from "../components/AudienceSection";
 import Pricing from "../components/Pricing";
-import CTA from "../components/CTA";
 import Footer from "../components/Footer";
 
 export default function Landing() {
@@ -29,7 +28,6 @@ export default function Landing() {
       <ToolsSection />
       <AudienceSection />
       <Pricing />
-      <CTA />
       <Footer />
     </>
   );

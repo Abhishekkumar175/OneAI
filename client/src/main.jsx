@@ -16,6 +16,6 @@ createRoot(document.getElementById("root")).render(
     appearance={{ baseTheme: dark }}>
     <BrowserRouter>
       <App />
-    </BrowserRouter>,
+    </BrowserRouter>
   </ClerkProvider>
 );

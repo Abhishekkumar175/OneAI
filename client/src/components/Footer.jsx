@@ -1,63 +1,101 @@
 import { motion } from "framer-motion";
-import {
-  Github,
-  Twitter,
-  Linkedin,
-  Mail,
-  ArrowUpRight,
-} from "lucide-react";
+import { Github, Mail } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleScroll = (id) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <footer className="relative border-t border-white/10 bg-black/40 backdrop-blur-xl">
-      {/* Glow Line */}
-      <div className="absolute inset-x-0 -top-px h-px bg-linear-to-r from-transparent via-violet-500/40 to-transparent" />
+    <footer className="bg-linear-to-b from-black/60 to-black/40 py-24 px-6 relative overflow-hidden">
+      
+      {/* Background Glow */}
+      <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-violet-500/60 to-transparent z-10" />
+      <div className="max-w-6xl mx-auto">
+        <div className="rounded-3xl border border-white/10 bg-white/3 backdrop-blur-xl p-16">
 
-      <div className="max-w-6xl mx-auto px-6 py-20">
-        {/* Top */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Brand */}
-          
-          <div className="md:col-span-2">
-            <h3 className="text-xl font-semibold tracking-tight mb-3">
-              AI Platform
-            </h3>
-            <p className="text-sm text-gray-400 max-w-md">
-              Build faster with powerful AI tools. Chat, generate content,
-              analyze data, and automate workflows — all in one dashboard.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
 
-            {/* Socials */}
-            <div className="flex items-center gap-4 mt-6">
-              <SocialIcon icon={Github} />
-              <SocialIcon icon={Twitter} />
-              <SocialIcon icon={Linkedin} />
-              <SocialIcon icon={Mail} />
+            {/* Brand */}
+            <div>
+              <h3 className="text-2xl font-semibold tracking-tight mb-4">
+                Promptix<span className="text-violet-400">.ai</span>
+              </h3>
+
+              <p className="text-sm text-gray-400 max-w-md leading-relaxed">
+                An all-in-one AI platform designed to help creators,
+                developers, and professionals generate smarter content,
+                automate workflows, and move faster.
+              </p>
+            </div>
+
+            {/* Navigation */}
+            <div>
+              <h4 className="text-sm tracking-widest text-gray-400 mb-6">
+                NAVIGATION
+              </h4>
+
+              <ul className="space-y-4 text-gray-300 text-sm">
+                <li>
+                  <motion.button
+                    onClick={() => handleScroll("hero")}
+                    whileHover={{ x: 6 }}
+                    className="hover:text-white transition"
+                  >
+                    Home
+                  </motion.button>
+                </li>
+
+                <li>
+                  <motion.button
+                    onClick={() => handleScroll("tools")}
+                    whileHover={{ x: 6 }}
+                    className="hover:text-white transition"
+                  >
+                    AI Tools
+                  </motion.button>
+                </li>
+
+                <li>
+                  <motion.button
+                    onClick={() => handleScroll("pricing")}
+                    whileHover={{ x: 6 }}
+                    className="hover:text-white transition"
+                  >
+                    Pricing
+                  </motion.button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Social */}
+            <div>
+              <h4 className="text-sm tracking-widest text-gray-400 mb-6">
+                LET'S CONNECT
+              </h4>
+
+              <div className="flex items-center gap-6">
+                <SocialIcon icon={Github} />
+                <SocialIcon icon={Mail} />
+              </div>
             </div>
           </div>
 
-          {/* Links */}
-          <FooterColumn
-            title="Product"
-            links={["Features", "Pricing"]}
-          />
-
-          <FooterColumn
-            title="Company"
-            links={["About", "Careers", "Contact"]}
-          />
-        </div>
-
-        {/* Bottom */}
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} AI Platform. All rights reserved.
-          </p>
-
-          <div className="flex items-center gap-6 text-xs text-gray-400">
-            <FooterLink label="Privacy Policy" />
-            <FooterLink label="Terms of Service" />
-            <FooterLink label="Security" />
+          <div className="mt-16 border-t border-white/10 pt-8">
+            <p className="text-xs text-gray-500">
+              © {new Date().getFullYear()} Promptix.ai. All rights reserved.
+            </p>
           </div>
         </div>
       </div>
@@ -65,51 +103,17 @@ export default function Footer() {
   );
 }
 
-/* ---------------- Sub Components ---------------- */
-
-function FooterColumn({ title, links }) {
-  return (
-    <div>
-      <h4 className="text-sm font-medium mb-4">{title}</h4>
-      <ul className="space-y-3">
-        {links.map((link) => (
-          <li key={link}>
-            <motion.a
-              href="#"
-              whileHover={{ x: 4 }}
-              transition={{ duration: 0.2 }}
-              className="group flex items-center gap-1 text-sm text-gray-400 hover:text-white"
-            >
-              {link}
-              <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition" />
-            </motion.a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function FooterLink({ label }) {
-  return (
-    <a
-      href="#"
-      className="hover:text-white transition"
-    >
-      {label}
-    </a>
-  );
-}
+/* -------- Social Button -------- */
 
 function SocialIcon({ icon: Icon }) {
   return (
     <motion.a
       href="#"
-      whileHover={{ y: -2 }}
+      whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
-      className="p-2 rounded-full border border-white/10 hover:border-violet-400/50 hover:bg-white/5"
+      className="p-4 rounded-xl border border-white/10 bg-white/2 hover:border-violet-400/50 hover:bg-white/5 transition"
     >
-      <Icon className="w-4 h-4 text-gray-300" />
+      <Icon className="w-5 h-5 text-gray-300" />
     </motion.a>
   );
 }

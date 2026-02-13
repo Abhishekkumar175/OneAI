@@ -8,10 +8,11 @@ export default function TopNavbar() {
       sticky top-0 z-50
     ">
       <div className="flex items-center gap-2">
-        <img src="/image.png" alt="QuickAI" className="h-8" />
-        <span className="text-lg font-semibold text-white">
+        <span className="bg-linear-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
+            Promptix
+          </span>
           
-        </span>
+       
       </div>
     </header>
   );

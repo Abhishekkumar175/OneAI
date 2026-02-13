@@ -4,7 +4,7 @@ import Particles from "./Particles";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden flex items-center justify-center bg-[#0b0f1a]">
+    <section id="hero" className="relative min-h-screen overflow-hidden flex items-center justify-center bg-[#020610]">
 
       <div className="absolute inset-0 z-10">
         <Particles />

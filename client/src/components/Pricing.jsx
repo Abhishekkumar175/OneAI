@@ -4,12 +4,8 @@ import { dark } from "@clerk/themes";
 
 export default function Pricing() {
   return (
-    <section className="relative py-32 overflow-hidden">
-      {/* 🌌 Background Glow */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-linear-to-b from-violet-500/10 via-transparent to-transparent" />
-        <div className="absolute left-1/2 top-1/2 w-130 h-130 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/20 blur-[140px]" />
-      </div>
+    <section id="pricing" className="relative py-32 bg-black/50 overflow-hidden">
+      
 
       {/* Top Divider */}
       <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-violet-500/40 to-transparent" />

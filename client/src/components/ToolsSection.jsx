@@ -54,10 +54,16 @@ const container = {
 
 export default function ToolsSection() {
   return (
-    <section className="relative py-32">
-     
-      <div className="absolute inset-x-0 -top-px h-px bg-linear-to-r from-transparent via-violet-500/40 to-transparent" />
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="tools" className="relative py-30 bg-linear-to-b from-black/60 to-black/40 overflow-hidden">
+      
+      {/* Background Layer */}
+      <div className="absolute inset-0 -z-20 bg-linear-to-b from-black/60 to-black/40" />
+
+      {/* Glowing Line (Above Background) */}
+      <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-violet-500/60 to-transparent z-10" />
+
+      <div className="relative z-20 max-w-7xl mx-auto px-6">
+        
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -86,7 +92,9 @@ export default function ToolsSection() {
             <ToolCard key={i} tool={tool} />
           ))}
         </motion.div>
+
       </div>
     </section>
   );
 }
+
